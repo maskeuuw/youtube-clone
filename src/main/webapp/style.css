@@ -1,0 +1,320 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    padding-top: 56px; /* Space for fixed header */
+}
+
+.yt-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    z-index: 1030;
+    background: white;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.yt-logo {
+    color: #ff0000;
+    font-size: 24px;
+    margin-right: 2px;
+    line-height: 1;
+}
+
+.yt-logo-text {
+    font-weight: bold;
+}
+
+/* Sidebar - Fixed position, always visible on desktop */
+.yt-sidebar {
+    width: 240px;
+    height: calc(100vh - 56px);
+    position: fixed;
+    top: 56px;
+    left: 0;
+    padding: 8px 0;
+    overflow-y: auto;
+    background-color: white;
+    z-index: 1020;
+    border-right: 1px solid #e5e5e5;
+    transition: transform 0.3s ease;
+}
+
+/* Bootstrap collapse - hide on mobile */
+.collapse:not(.show) {
+    display: none;
+}
+
+.collapse.show {
+    display: block;
+}
+
+.collapsing {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.35s ease;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 24px;
+    border-radius: 10px;
+    transition: background-color 0.15s;
+    margin: 2px 12px;
+    cursor: pointer;
+}
+
+.sidebar-item:hover {
+    background-color: #f2f2f2;
+}
+
+.sidebar-item.active {
+    background-color: #e5e5e5;
+    font-weight: bold;
+}
+
+.sidebar-title {
+    font-size: 0.8rem;
+    padding-left: 36px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    color: #666;
+}
+
+/* Main content area - Adjust margin for sidebar */
+.yt-feed-container {
+    margin-left: 240px; /* Space for sidebar on desktop */
+    padding: 20px 30px;
+    min-height: calc(100vh - 56px);
+    transition: margin-left 0.3s ease;
+    width: calc(100% - 240px); /* Adjust width for sidebar */
+    box-sizing: border-box;
+}
+
+/* When sidebar is collapsed on mobile */
+.yt-sidebar.collapsed + .yt-feed-container {
+    margin-left: 0;
+    width: 100%;
+}
+
+/* YouTube-style video grid - Adjusted for smaller width */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px 16px;
+    margin: 0 auto;
+    max-width: 1800px; /* Reduced from 2000px */
+}
+
+.video-card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Thumbnail */
+.thumbnail-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: #e0e0e0;
+    margin-bottom: 12px;
+}
+
+.thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.video-card:hover .thumbnail {
+    transform: scale(1.05);
+}
+
+.duration-badge {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Video Details */
+.video-details {
+    display: flex;
+    gap: 12px;
+}
+
+.channel-avatar {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #ddd;
+    flex-shrink: 0;
+}
+
+.channel-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-info {
+    flex: 1;
+    min-width: 0; /* Prevents text overflow */
+}
+
+.video-title {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #0f0f0f;
+    margin-bottom: 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.channel-name {
+    font-size: 0.9rem;
+    color: #606060;
+    margin-bottom: 2px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.video-stats {
+    font-size: 0.85rem;
+    color: #606060;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.dot-separator {
+    font-size: 8px;
+    line-height: 1;
+}
+
+/* Loading placeholder */
+.thumbnail-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+    color: #999;
+    font-size: 14px;
+}
+
+.thumbnail-placeholder i {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: #aaa;
+}
+
+/* No videos message */
+.no-videos {
+    text-align: center;
+    padding: 80px 20px;
+    grid-column: 1 / -1;
+    color: #606060;
+}
+
+.no-videos i {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+}
+
+/* Responsive - Mobile */
+@media (max-width: 991.98px) {
+    /* On mobile, sidebar overlays on top */
+    .yt-sidebar {
+        transform: translateX(-100%);
+        z-index: 1040;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+    }
+    
+    .yt-sidebar.show {
+        transform: translateX(0);
+    }
+    
+    /* On mobile, content takes full width */
+    .yt-feed-container {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+    
+    /* Backdrop for mobile sidebar */
+    .sidebar-backdrop {
+        position: fixed;
+        top: 56px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1035;
+        display: none;
+    }
+    
+    .sidebar-backdrop.show {
+        display: block;
+    }
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1200px) {
+    .video-grid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 30px 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .yt-feed-container {
+        padding: 15px;
+    }
+    
+    .video-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 20px 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .video-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}

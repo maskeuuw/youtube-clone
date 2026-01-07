@@ -1,0 +1,127 @@
+* {
+	font-family: 'Roboto', Arial, sans-serif;
+}
+
+body {
+	background-color: #f9f9f9;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+}
+
+.yt-card { /* Renamed from .signup-card to match existing HTML */
+	background-color: #ffffff;
+	border-radius: 8px;
+	/* Google-style shadow */
+	box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px
+		rgba(60, 64, 67, 0.15);
+	padding: 2.5rem;
+	border: none;
+}
+
+.card-header-content { /* Custom class for centering content */
+	text-align: center;
+	margin-bottom: 1.5rem;
+}
+
+.card-title {
+	font-size: 1.5rem;
+	font-weight: 400;
+	color: #0f0f0f;
+	margin-bottom: 0.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+}
+
+.card-title i {
+	color: #ff0000; /* YouTube Red icon */
+}
+
+.card-subtitle {
+	font-size: 1rem;
+	color: #606060;
+	font-weight: 400;
+}
+
+/* Form Controls */
+.form-label {
+	font-weight: 500;
+	color: #0f0f0f;
+	margin-bottom: 0.5rem;
+	font-size: 0.875rem;
+}
+
+.form-control-yt {
+	border: 1px solid #dadce0;
+	border-radius: 4px;
+	padding: 0.75rem;
+	font-size: 1rem;
+	transition: border-color 0.2s;
+	width: 100%;
+}
+
+.form-control-yt:focus {
+	border-color: #1a73e8; /* Google Blue focus */
+	box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+	outline: none;
+}
+
+/* Buttons */
+.btn-yt-primary {
+	background-color: #1a73e8; /* Google Blue Primary Button */
+	color: white;
+	border: none;
+	border-radius: 4px;
+	padding: 0.625rem 1.5rem;
+	font-weight: 500;
+	font-size: 0.875rem;
+	transition: background-color 0.2s;
+	cursor: pointer;
+}
+
+.btn-yt-primary:hover {
+	background-color: #0d62d9;
+	color: white;
+}
+
+/* Server-Side Messages */
+.server-error {
+	background-color: #fce8e6;
+	border: 1px solid #f28b82;
+	border-radius: 4px;
+	padding: 12px;
+	margin-bottom: 1rem;
+	color: #d93025;
+	font-size: 0.875rem;
+}
+
+.server-success {
+	background-color: #e6f4ea;
+	border: 1px solid #81c995;
+	border-radius: 4px;
+	padding: 12px;
+	margin-bottom: 1rem;
+	color: #137333;
+	font-size: 0.875rem;
+}
+
+/* Not Logged In Section */
+.login-required-box {
+	background-color: #ffffff;
+	border-radius: 8px;
+	box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px
+		rgba(60, 64, 67, 0.15);
+}
+
+@media ( max-width : 576px) {
+	.yt-card {
+		padding: 1.5rem;
+	}
+	body {
+		padding: 10px;
+	}
+}

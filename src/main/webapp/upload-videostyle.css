@@ -1,0 +1,19 @@
+.upload-zone-label {
+	border: 2px dashed #ccc;
+	border-radius: 10px;
+	background-color: #f8f9fa;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.upload-zone-label:hover {
+	border-color: #0d6efd;
+	background-color: #e9ecef;
+}
+
+.form-section-title {
+	font-weight: 600;
+	color: #333;
+	margin-top: 1rem;
+	margin-bottom: 0.5rem;
+}

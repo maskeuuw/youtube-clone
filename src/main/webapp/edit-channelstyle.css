@@ -1,0 +1,198 @@
+/* edit-channel-style.css */
+
+.channel-avatar-edit {
+    width: 150px;
+    height: 150px;
+    border: 3px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.channel-avatar-edit:hover {
+    border-color: #007bff;
+    cursor: pointer;
+}
+
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.preview-image {
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.upload-hint {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* Responsive styles for the form */
+@media (max-width: 768px) {
+    .channel-avatar-edit {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .form-container {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .channel-avatar-edit {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .form-container {
+        padding: 10px;
+    }
+}
+
+/* Ensure images are responsive */
+.object-fit-cover {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* Card styling for danger zone */
+.danger-zone-card {
+    border: 2px solid #dc3545;
+}
+
+.danger-zone-card .card-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Button styling */
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: #ff0000;
+    border-color: #ff0000;
+}
+
+.btn-primary:hover {
+    background-color: #cc0000;
+    border-color: #cc0000;
+}
+
+.btn-outline-secondary {
+    border-color: #dee2e6;
+    color: #606060;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #f8f9fa;
+    border-color: #ccc;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #bb2d3b;
+    border-color: #b02a37;
+}
+/* Fix body for fixed header */
+body {
+    padding-top: 56px;
+    overflow-x: hidden;
+}
+
+/* Main layout container */
+.d-flex.pt-5 {
+    padding-top: 0 !important;
+    min-height: calc(100vh - 56px);
+    position: relative;
+}
+
+/* Main content area - PREVENT OVERLAP */
+#feedContainer {
+    width: 100%;
+    min-height: calc(100vh - 56px);
+    background-color: #f8f9fa;
+    padding: 20px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* DESKTOP: When sidebar is open */
+@media (min-width: 992px) {
+    /* Sidebar is fixed width */
+    #sidebarCollapse {
+        width: 240px;
+        min-width: 240px;
+    }
+    
+    /* When sidebar is visible, shift main content */
+    #sidebarCollapse.show ~ #feedContainer {
+        margin-left: 240px;
+        width: calc(100% - 240px);
+    }
+    
+    /* When sidebar is hidden */
+    #sidebarCollapse:not(.show) ~ #feedContainer {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+/* MOBILE & TABLET: Full width */
+@media (max-width: 991.98px) {
+    #feedContainer {
+        width: 100% !important;
+        margin-left: 0 !important;
+        padding: 15px;
+    }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 576px) {
+    #feedContainer {
+        padding: 10px;
+    }
+    
+    .container, .container-fluid {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+/* Responsive form elements */
+@media (max-width: 768px) {
+    .d-flex.justify-content-between {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .d-flex.justify-content-between > * {
+        width: 100%;
+        text-align: center;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Button responsive */
+@media (max-width: 576px) {
+    .form-actions-responsive {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .form-actions-responsive .btn {
+        width: 100%;
+    }
+}

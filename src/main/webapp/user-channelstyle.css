@@ -1,0 +1,195 @@
+/* Simplified Variables for Light Mode */
+:root { 
+	-primary-color: #ff0000; /* YouTube Red */ 
+	-light-bg: #ffffff; 
+	-main-bg: #f4f4f4; 
+	-card-bg: #ffffff; 
+	-text-primary: #111111; 
+	-text-secondary: #606060; 
+	-border-color: #e0e0e0;
+}
+
+body {
+	background-color: var(- -main-bg);
+	color: var(- -text-primary);
+	font-family: Arial, sans-serif;
+}
+
+/* Header Styles */
+.channel-header {
+	background: var(- -light-bg); /* Clean white header */
+	padding: 2rem 0;
+	border-bottom: 2px solid var(- -primary-color);
+}
+
+.channel-avatar {
+	border: 3px solid var(- -primary-color);
+	background-color: #ccc;
+	color: var(- -text-primary);
+}
+
+/* Buttons - High contrast */
+.subscribe-btn {
+	background-color: var(- -primary-color);
+	color: white;
+	border-radius: 4px;
+	padding: 0.5rem 1.5rem;
+	font-weight: 600;
+}
+
+/* Navigation Tabs - Clean, flat look */
+.channel-nav {
+	background-color: var(- -light-bg);
+	border-bottom: 1px solid var(- -border-color);
+}
+
+.nav-tabs .nav-link {
+	color: var(- -text-secondary);
+	border: none;
+	padding: 1rem 1.5rem;
+}
+
+.nav-tabs .nav-link.active {
+	color: var(- -primary-color);
+	background-color: transparent;
+	border-bottom: 3px solid var(- -primary-color);
+}
+
+/* Card Styles - Clean white background */
+.video-card, .about-card, .sidebar-card {
+	background-color: var(- -card-bg);
+	border: 1px solid var(- -border-color);
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.video-title {
+	color: var(- -text-primary);
+	font-weight: 700;
+}
+
+.stat-card {
+	background: var(- -primary-color); /* Kept red for emphasis */
+	color: white;
+	padding: 1rem;
+	border-radius: 4px;
+}
+
+/* Footer */
+.bg-card {
+	background-color: var(- -light-bg);
+	border-top: 1px solid var(- -border-color);
+}
+
+/* Sidebar and Content Layout Fix */
+.yt-sidebar {
+    width: 240px;
+    height: calc(100vh - 56px);
+    position: fixed;
+    top: 56px;
+    left: 0;
+    padding: 8px 0;
+    overflow-y: auto;
+    background-color: white;
+    z-index: 1000;
+    /* Initial state: pushed off-screen to the left */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* When Bootstrap adds .show class, bring it back */
+.yt-sidebar.show {
+    transform: translateX(0);
+}
+
+/* Main content area styling */
+.yt-feed-container {
+    margin-top: 56px; /* Height of the header */
+    padding: 20px;
+    transition: margin-left 0.3s ease-in-out;
+    width: 100%;
+    min-height: calc(100vh - 56px);
+}
+
+/* Desktop (lg and up) - Sidebar always visible on desktop */
+@media (min-width: 992px) {
+    .yt-sidebar {
+        transform: translateX(0); /* Always visible on desktop */
+    }
+    
+    /* When sidebar is shown (always on desktop) */
+    .yt-sidebar.show + .yt-feed-container {
+        margin-left: 240px;
+        width: calc(100% - 240px);
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 991px) {
+    /* Mobile overlay effect */
+    .yt-sidebar.show {
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Mobile overlay background */
+    .yt-sidebar.show::before {
+        content: '';
+        position: fixed;
+        top: 56px;
+        left: 240px;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+}
+
+/* Ensure header stays on top */
+.yt-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    z-index: 1100; /* Higher than sidebar */
+    background: white;
+}
+
+/* Channel specific responsive adjustments */
+.channel-header {
+    padding-top: 1rem;
+}
+
+.channel-nav {
+    position: sticky;
+    top: 56px;
+    z-index: 100;
+    background: white;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .channel-avatar {
+        width: 70px !important;
+        height: 70px !important;
+    }
+    
+    .channel-name {
+        font-size: 1.5rem;
+    }
+    
+    .channel-stats {
+        font-size: 0.85rem;
+    }
+    
+    .nav-tabs .nav-link {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Ensure content doesn't get hidden behind sidebar on mobile */
+body {
+    overflow-x: hidden;
+}
